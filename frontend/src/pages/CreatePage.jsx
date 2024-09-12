@@ -2,19 +2,25 @@ import { Container, VStack, Heading, Box, useColorModeValue, Input, Button } fro
 import { useState } from "react";
 import { useProductStore } from "../store/product";
 
+
+
+
+
 const CreatePage = () => {
     const [newProduct, setNewProduct] = useState({
-        name: " ",
-        price: " ",
-        image: " ",
+        name: "",
+        price: "",
+        image: "",
     });
+
+    // const toast = useToast();
     
-    const {createProduct} = useProductStore()
+    const {createProduct}=useProductStore();
 
     const handleAddProduct = async() => {
-        const {success, message}  = await createProduct(newProduct)
-        console.log("Success: ", success)
-        console.log("Message: ", message)
+       const {success, message} = await createProduct(newProduct);
+       console.log("Success: ", success);
+       console.log("Message: ", message);
     };
          
     return (
@@ -24,11 +30,16 @@ const CreatePage = () => {
                     Create new product
                 </Heading>
 
-                <Box w={"full"} bg={useColorModeValue("white", "gray.800")}
-                p={6} rounded={'lg'} shadow={'md'}>
+                <Box 
+                    w={"full"} 
+                    bg={useColorModeValue("white", "gray.800")}
+                    p={6} 
+                    rounded={"lg"} 
+                    shadow={"md"}>
+
                     <VStack spacing={4}>
                         <Input 
-                            placeholder="Product name"
+                            placeholder="Product Name"
                             name = "name" 
                             value={newProduct.name}
                             onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
@@ -47,7 +58,7 @@ const CreatePage = () => {
                             onChange={(e) => setNewProduct({...newProduct, image: e.target.value })}
                         />
 
-                        <Button colorScheme="blue" onClick={handleAddProduct} w={'full'}>
+                        <Button colorScheme="blue" onClick={handleAddProduct} w='full'>
                             Add Product
                         </Button>
                         

@@ -11,13 +11,14 @@ export const useProductStore = create((set) => ({
             method: "POST",
             headers: {
                 "Content-Type":"application/json",
-                "Access-Control-Allow-Origin": "*"
+                // "Access-Control-Allow-Origin": "true"
             },
-            body:JSON.stringify(newProduct)
-        })
+            body: JSON.stringify(newProduct),
+        });
         const data = await res.json();
-        set((state) => ({products: [...state.products, data.data] }));
-        return { success: true, messsage: "Product Created Successfully"}
+        set((state) => ({ products:[...state.products, data.data]}));
+        return { success: true, message: "Product Created Successfully"};
     }
 }));
+
 
