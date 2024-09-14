@@ -6,7 +6,7 @@ import { Box, Heading, Image, Text, HStack, VStack, IconButton, useColorModeValu
         } from "@chakra-ui/react"
 import { useProductStore } from '../store/product';
 import { useState } from 'react';
-import { set } from 'mongoose';
+
 
 
 
@@ -79,7 +79,7 @@ const ProductCard = ({product}) => {
             </Heading>
 
             <Text fontWeight= 'bold' fontSize='xl' color={textColor} mb={4}>
-                ${product.price}
+                Ugx {product.price} 
             </Text>
 
             <HStack spacing={2}>
